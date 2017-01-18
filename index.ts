@@ -1,2 +1,1 @@
-export * from './app.component';
-export * from './app.module';
+import {TitleService} from "src/util/title.service"
