@@ -19,11 +19,11 @@ var TitleService = (function () {
         this.titleSnapshot = title;
         this.title.next(title);
     };
+    TitleService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], TitleService);
     return TitleService;
 }());
-TitleService = __decorate([
-    core_1.Injectable,
-    __metadata("design:paramtypes", [])
-], TitleService);
 exports.TitleService = TitleService;
 //# sourceMappingURL=/home/peek/project/peek-client-fe-util/src/util/title.service.js.map
