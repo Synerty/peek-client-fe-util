@@ -1,11 +1,12 @@
 import {Injectable} from "@angular/core";
+import {Subject} from "rxjs";
 
 @Injectable
-class TitleService {
+export class TitleService {
     title = new Subject<string>();
     titleSnapshot = "no title";
 
-    setTitle(title:string){
+    setTitle(title: string) {
         this.titleSnapshot = title;
         this.title.next(title);
     }
