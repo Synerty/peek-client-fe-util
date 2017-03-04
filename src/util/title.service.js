@@ -11,19 +11,68 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var rxjs_1 = require("rxjs");
 var TitleService = (function () {
-    function TitleService() {
+    function TitleService(links) {
         this.title = new rxjs_1.Subject();
-        this.titleSnapshot = "no title";
+        this.titleSnapshot = 'no title';
+        this.leftLinks = new rxjs_1.Subject();
+        this.leftLinksSnapshot = [];
+        this.rightLinks = new rxjs_1.Subject();
+        this.rightLinksSnapshot = [];
+        for (var _i = 0, links_1 = links; _i < links_1.length; _i++) {
+            var link = links_1[_i];
+            if (link.left) {
+                this.leftLinksSnapshot.push(link);
+            }
+            else {
+                this.rightLinksSnapshot.push(link);
+            }
+        }
     }
     TitleService.prototype.setTitle = function (title) {
         this.titleSnapshot = title;
         this.title.next(title);
     };
-    TitleService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], TitleService);
+    TitleService.prototype.updateButtonBadgeCount = function (pluginName, badgeCount) {
+        for (var _i = 0, _a = this.leftLinksSnapshot; _i < _a.length; _i++) {
+            var btn = _a[_i];
+            if (pluginName === btn.plugin) {
+                btn.badgeCount = badgeCount;
+                this.leftLinks.next(this.leftLinksSnapshot);
+                return;
+            }
+        }
+        for (var _b = 0, _c = this.rightLinksSnapshot; _b < _c.length; _b++) {
+            var btn = _c[_b];
+            if (pluginName === btn.plugin) {
+                btn.badgeCount = badgeCount;
+                this.rightLinks.next(this.rightLinksSnapshot);
+                return;
+            }
+        }
+    };
+    TitleService.prototype.updateButtonText = function (pluginName, text) {
+        for (var _i = 0, _a = this.leftLinksSnapshot; _i < _a.length; _i++) {
+            var btn = _a[_i];
+            if (pluginName === btn.plugin) {
+                btn.text = text;
+                this.leftLinks.next(this.leftLinksSnapshot);
+                return;
+            }
+        }
+        for (var _b = 0, _c = this.rightLinksSnapshot; _b < _c.length; _b++) {
+            var btn = _c[_b];
+            if (pluginName === btn.plugin) {
+                btn.text = text;
+                this.rightLinks.next(this.rightLinksSnapshot);
+                return;
+            }
+        }
+    };
     return TitleService;
 }());
+TitleService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [Array])
+], TitleService);
 exports.TitleService = TitleService;
 //# sourceMappingURL=/home/peek/project/peek-client-fe-util/src/util/title.service.js.map
