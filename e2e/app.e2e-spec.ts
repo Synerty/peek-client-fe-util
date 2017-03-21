@@ -1,6 +1,6 @@
 import { PeekClientFeUtilPage } from './app.po';
 
-describe('peek-client-fe-util App', function() {
+describe('peek-mobile-util App', function() {
   let page: PeekClientFeUtilPage;
 
   beforeEach(() => {

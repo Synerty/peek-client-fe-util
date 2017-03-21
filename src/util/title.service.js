@@ -75,4 +75,4 @@ TitleService = __decorate([
     __metadata("design:paramtypes", [Array])
 ], TitleService);
 exports.TitleService = TitleService;
-//# sourceMappingURL=/home/peek/project/peek-client-fe-util/src/util/title.service.js.map
+//# sourceMappingURL=/home/peek/project/peek-mobile-util/src/util/title.service.js.map

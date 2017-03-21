@@ -27,4 +27,4 @@ describe('AppComponent', function () {
         expect(compiled.querySelector('h1').textContent).toContain('app works!');
     }));
 });
-//# sourceMappingURL=/home/peek/project/peek-client-fe-util/src/app/app.component.spec.js.map
+//# sourceMappingURL=/home/peek/project/peek-mobile-util/src/app/app.component.spec.js.map

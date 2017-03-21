@@ -20,4 +20,4 @@ AppComponent = __decorate([
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
-//# sourceMappingURL=/home/peek/project/peek-client-fe-util/src/app/app.component.js.map
+//# sourceMappingURL=/home/peek/project/peek-mobile-util/src/app/app.component.js.map

@@ -30,4 +30,4 @@ AppModule = __decorate([
     })
 ], AppModule);
 exports.AppModule = AppModule;
-//# sourceMappingURL=/home/peek/project/peek-client-fe-util/src/app/app.module.js.map
+//# sourceMappingURL=/home/peek/project/peek-mobile-util/src/app/app.module.js.map
