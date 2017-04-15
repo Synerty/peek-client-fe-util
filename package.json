@@ -12,10 +12,14 @@
   },
   "private": false,
   "dependencies": {
-    "@angular/core": "^4.0.0",
     "angular2-font-awesome": "^1.2.0",
     "rxjs": "~5.2.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.4",
+    "@angular/common": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/router": "^4.0.0",
+    "file-system": "^2.2.2",
+    "nativescript-angular": "^1.5.1"
   },
   "devDependencies": {}
 }
