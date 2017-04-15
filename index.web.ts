@@ -1,6 +1,6 @@
 
-export {Sound} from "./src/peek-web-ns/factories/Sound";
-export {DeviceInfoService} from "./src/peek-web-ns/services/device-info.interface";
-export {DeviceInfoWebService} from "./src/peek-web-ns/services/device-info-web.service";
-export {PeekCoreConfigService} from "./src/peek-web-ns/services/peek-core-config.service";
-export {PeekModuleFactory} from "./src/peek-web-ns/factories/peek-module-web.factory";
+export {Sound} from "./peek-mobile-util/factories/Sound";
+export {DeviceInfoService} from "./peek-mobile-util/services/device-info.interface";
+export {DeviceInfoWebService} from "./peek-mobile-util/services/device-info-web.service";
+export {PeekCoreConfigService} from "./peek-mobile-util/services/peek-core-config.service";
+export {PeekModuleFactory} from "./peek-mobile-util/factories/peek-module-web.factory";
