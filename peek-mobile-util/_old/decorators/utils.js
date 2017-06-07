@@ -1,5 +1,5 @@
-// http://angularjs.blogspot.com.au/2016/03/code-reuse-in-angular-2-native-mobile.html
 "use strict";
+// http://angularjs.blogspot.com.au/2016/03/code-reuse-in-angular-2-native-mobile.html
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var peek_view_broker_service_1 = require("../peek-view-broker.service");

@@ -1,14 +1,14 @@
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 
-import {Angular2FontAwesomeModule} from "angular2-font-awesome/angular2-font-awesome";
+import {AngularFontAwesomeModule} from "angular-font-awesome/angular-font-awesome";
 import {Sound} from "./Sound";
 
 export class PeekModuleFactory {
     /**
      * Provide a cross platform Browser module
      */
-    static readonly FormsModules = [FormsModule, Angular2FontAwesomeModule];
+    static readonly FormsModules = [FormsModule, AngularFontAwesomeModule];
 
     /**
      * Provide a cross platform Router module

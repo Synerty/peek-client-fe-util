@@ -12,7 +12,7 @@
   },
   "private": false,
   "dependencies": {
-    "angular2-font-awesome": "^1.2.0",
+    "angular-font-awesome": "^2.0.0",
     "rxjs": "^5.2.0",
     "zone.js": "^0.8.4",
     "@angular/common": "^4.0.0",
