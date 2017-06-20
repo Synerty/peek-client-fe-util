@@ -21,35 +21,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var device_info_interface_1 = require("./device-info.interface");
-var app = require("tns-core-modules/application");
-var platform = require("tns-core-modules/platform");
-var DeviceInfoNsService = (function (_super) {
-    __extends(DeviceInfoNsService, _super);
-    function DeviceInfoNsService() {
+var md5_1 = require("ts-md5/dist/md5");
+var DeviceInfoDesktopWebService = (function (_super) {
+    __extends(DeviceInfoDesktopWebService, _super);
+    function DeviceInfoDesktopWebService() {
         return _super.call(this) || this;
     }
-    DeviceInfoNsService.prototype.uuid = function () {
-        return platform.device.uuid;
+    DeviceInfoDesktopWebService.prototype.uuid = function () {
+        // We don't need a real good way of getting the UUID, Peek just assigns it a token
+        var browser = navigator.userAgent.substr(0, navigator.userAgent.indexOf(' '));
+        return md5_1.Md5.hashStr(browser + " " + new Date().toString());
     };
-    DeviceInfoNsService.prototype.description = function () {
-        return platform.device.manufacturer + ", " + platform.device.model + ", " + platform.device.osVersion;
+    DeviceInfoDesktopWebService.prototype.description = function () {
+        return navigator.userAgent;
     };
-    DeviceInfoNsService.prototype.deviceType = function () {
-        if (app.android) {
-            return device_info_interface_1.DeviceType.MOBILE_ANDROID;
-        }
-        else if (app.ios) {
-            return device_info_interface_1.DeviceType.MOBILE_IOS;
-        }
-        else {
-            throw new Error("Unknown native type");
-        }
+    DeviceInfoDesktopWebService.prototype.deviceType = function () {
+        return device_info_interface_1.DeviceType.DESKTOP_WEB;
     };
-    return DeviceInfoNsService;
+    return DeviceInfoDesktopWebService;
 }(device_info_interface_1.DeviceInfoService));
-DeviceInfoNsService = __decorate([
+DeviceInfoDesktopWebService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [])
-], DeviceInfoNsService);
-exports.DeviceInfoNsService = DeviceInfoNsService;
-//# sourceMappingURL=/home/peek/project/peek-util/peek-util/services/device-info-mobile-ns.service.js.map
+], DeviceInfoDesktopWebService);
+exports.DeviceInfoDesktopWebService = DeviceInfoDesktopWebService;
+//# sourceMappingURL=/home/peek/project/peek-util/peek-util/services/device-info-desktop-web.service.js.map

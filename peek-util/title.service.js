@@ -15,6 +15,8 @@ var TitleService = (function () {
     function TitleService(links) {
         this.title = new rxjs_1.Subject();
         this.titleSnapshot = 'no title';
+        this.isEnabled = new rxjs_1.Subject();
+        this.isEnabledSnaphot = true;
         this.leftLinks = new rxjs_1.Subject();
         this.leftLinksSnapshot = [];
         this.rightLinks = new rxjs_1.Subject();
@@ -32,6 +34,10 @@ var TitleService = (function () {
     TitleService.prototype.setTitle = function (title) {
         this.titleSnapshot = title;
         this.title.next(title);
+    };
+    TitleService.prototype.setEnabled = function (value) {
+        this.isEnabledSnaphot = value;
+        this.isEnabled.next(value);
     };
     TitleService.prototype.updateButtonBadgeCount = function (pluginName, badgeCount) {
         for (var _i = 0, _a = this.leftLinksSnapshot; _i < _a.length; _i++) {
@@ -76,4 +82,4 @@ TitleService = __decorate([
     __metadata("design:paramtypes", [Array])
 ], TitleService);
 exports.TitleService = TitleService;
-//# sourceMappingURL=/home/peek/project/peek-mobile-util/peek-mobile-util/title.service.js.map
+//# sourceMappingURL=/home/peek/project/peek-util/peek-util/title.service.js.map

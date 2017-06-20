@@ -30,4 +30,4 @@ PeekModuleFactory.FormsModules = [
  */
 PeekModuleFactory.RouterModule = nativescript_angular_1.NativeScriptRouterModule;
 exports.PeekModuleFactory = PeekModuleFactory;
-//# sourceMappingURL=/home/peek/project/peek-mobile-util/peek-mobile-util/factories/peek-module-ns.factory.js.map
+//# sourceMappingURL=/home/peek/project/peek-util/peek-util/factories/peek-module-ns.factory.js.map

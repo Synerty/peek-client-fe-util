@@ -10,6 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var DeviceType;
+(function (DeviceType) {
+    DeviceType[DeviceType["MOBILE_WEB"] = 0] = "MOBILE_WEB";
+    DeviceType[DeviceType["MOBILE_IOS"] = 1] = "MOBILE_IOS";
+    DeviceType[DeviceType["MOBILE_ANDROID"] = 2] = "MOBILE_ANDROID";
+    DeviceType[DeviceType["DESKTOP_WEB"] = 3] = "DESKTOP_WEB";
+    DeviceType[DeviceType["DESKTOP_WINDOWS"] = 4] = "DESKTOP_WINDOWS";
+    DeviceType[DeviceType["DESKTOP_MACOS"] = 5] = "DESKTOP_MACOS";
+})(DeviceType = exports.DeviceType || (exports.DeviceType = {}));
 var DeviceInfoService = (function () {
     function DeviceInfoService() {
     }
@@ -20,4 +29,4 @@ DeviceInfoService = __decorate([
     __metadata("design:paramtypes", [])
 ], DeviceInfoService);
 exports.DeviceInfoService = DeviceInfoService;
-//# sourceMappingURL=/home/peek/project/peek-mobile-util/peek-mobile-util/services/device-info.interface.js.map
+//# sourceMappingURL=/home/peek/project/peek-util/peek-util/services/device-info.interface.js.map
