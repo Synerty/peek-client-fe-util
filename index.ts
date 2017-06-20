@@ -1,1 +1,1 @@
-export {TitleService, TitleBarLink} from "./peek-mobile-util/title.service";
+export {TitleService, TitleBarLink} from "./peek-util/title.service";
