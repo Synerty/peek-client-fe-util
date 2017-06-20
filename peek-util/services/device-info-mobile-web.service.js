@@ -22,27 +22,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var device_info_interface_1 = require("./device-info.interface");
 var md5_1 = require("ts-md5/dist/md5");
-var DeviceInfoWebService = (function (_super) {
-    __extends(DeviceInfoWebService, _super);
-    function DeviceInfoWebService() {
+var DeviceInfoMobileWebService = (function (_super) {
+    __extends(DeviceInfoMobileWebService, _super);
+    function DeviceInfoMobileWebService() {
         return _super.call(this) || this;
     }
-    DeviceInfoWebService.prototype.uuid = function () {
+    DeviceInfoMobileWebService.prototype.uuid = function () {
         // We don't need a real good way of getting the UUID, Peek just assigns it a token
         var browser = navigator.userAgent.substr(0, navigator.userAgent.indexOf(' '));
         return md5_1.Md5.hashStr(browser + " " + new Date().toString());
     };
-    DeviceInfoWebService.prototype.description = function () {
+    DeviceInfoMobileWebService.prototype.description = function () {
         return navigator.userAgent;
     };
-    DeviceInfoWebService.prototype.deviceType = function () {
+    DeviceInfoMobileWebService.prototype.deviceType = function () {
         return device_info_interface_1.DeviceType.MOBILE_WEB;
     };
-    return DeviceInfoWebService;
+    return DeviceInfoMobileWebService;
 }(device_info_interface_1.DeviceInfoService));
-DeviceInfoWebService = __decorate([
+DeviceInfoMobileWebService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [])
-], DeviceInfoWebService);
-exports.DeviceInfoWebService = DeviceInfoWebService;
+], DeviceInfoMobileWebService);
+exports.DeviceInfoMobileWebService = DeviceInfoMobileWebService;
 //# sourceMappingURL=/home/peek/project/peek-util/peek-util/services/device-info-mobile-web.service.js.map

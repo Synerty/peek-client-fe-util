@@ -4,7 +4,7 @@ import {DeviceInfoService, DeviceType} from "./device-info.interface";
 import {Md5} from "ts-md5/dist/md5";
 
 @Injectable()
-export class DeviceInfoWebService extends DeviceInfoService {
+export class DeviceInfoMobileWebService extends DeviceInfoService {
     constructor() {
         super();
 

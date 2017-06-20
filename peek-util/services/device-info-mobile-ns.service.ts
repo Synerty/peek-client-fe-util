@@ -5,7 +5,7 @@ import * as app from "tns-core-modules/application";
 import * as platform from "tns-core-modules/platform";
 
 @Injectable()
-export class DeviceInfoNsService extends DeviceInfoService {
+export class DeviceInfoMobileNsService extends DeviceInfoService {
     constructor() {
         super();
 
@@ -21,9 +21,9 @@ export class DeviceInfoNsService extends DeviceInfoService {
 
     deviceType(): DeviceType {
         if (app.android) {
-        return DeviceType.MOBILE_ANDROID;
+            return DeviceType.MOBILE_ANDROID;
         } else if (app.ios) {
-        return DeviceType.MOBILE_IOS;
+            return DeviceType.MOBILE_IOS;
         } else {
             throw new Error("Unknown native type");
         }

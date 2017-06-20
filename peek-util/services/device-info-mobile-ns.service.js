@@ -23,18 +23,18 @@ var core_1 = require("@angular/core");
 var device_info_interface_1 = require("./device-info.interface");
 var app = require("tns-core-modules/application");
 var platform = require("tns-core-modules/platform");
-var DeviceInfoNsService = (function (_super) {
-    __extends(DeviceInfoNsService, _super);
-    function DeviceInfoNsService() {
+var DeviceInfoMobileNsService = (function (_super) {
+    __extends(DeviceInfoMobileNsService, _super);
+    function DeviceInfoMobileNsService() {
         return _super.call(this) || this;
     }
-    DeviceInfoNsService.prototype.uuid = function () {
+    DeviceInfoMobileNsService.prototype.uuid = function () {
         return platform.device.uuid;
     };
-    DeviceInfoNsService.prototype.description = function () {
+    DeviceInfoMobileNsService.prototype.description = function () {
         return platform.device.manufacturer + ", " + platform.device.model + ", " + platform.device.osVersion;
     };
-    DeviceInfoNsService.prototype.deviceType = function () {
+    DeviceInfoMobileNsService.prototype.deviceType = function () {
         if (app.android) {
             return device_info_interface_1.DeviceType.MOBILE_ANDROID;
         }
@@ -45,11 +45,11 @@ var DeviceInfoNsService = (function (_super) {
             throw new Error("Unknown native type");
         }
     };
-    return DeviceInfoNsService;
+    return DeviceInfoMobileNsService;
 }(device_info_interface_1.DeviceInfoService));
-DeviceInfoNsService = __decorate([
+DeviceInfoMobileNsService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [])
-], DeviceInfoNsService);
-exports.DeviceInfoNsService = DeviceInfoNsService;
+], DeviceInfoMobileNsService);
+exports.DeviceInfoMobileNsService = DeviceInfoMobileNsService;
 //# sourceMappingURL=/home/peek/project/peek-util/peek-util/services/device-info-mobile-ns.service.js.map
