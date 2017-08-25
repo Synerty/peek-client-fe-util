@@ -4,4 +4,6 @@ var peek_module_ns_factory_1 = require("./peek-util/factories/peek-module-ns.fac
 exports.PeekModuleFactory = peek_module_ns_factory_1.PeekModuleFactory;
 var PlatformNs_1 = require("./peek-util/platform/PlatformNs");
 exports.Platform = PlatformNs_1.Platform;
-//# sourceMappingURL=/Users/peek/peek-dev/peek-util/index.ns.js.map
+var StyleSwitchComponentNs_1 = require("./peek-util/component/StyleSwitchComponentNs");
+exports.StyleSwitchComponent = StyleSwitchComponentNs_1.StyleSwitchComponent;
+//# sourceMappingURL=/home/peek/project/peek-util/index.ns.js.map

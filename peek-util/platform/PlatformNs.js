@@ -26,4 +26,4 @@ var Platform = (function () {
     return Platform;
 }());
 exports.Platform = Platform;
-//# sourceMappingURL=/Users/peek/peek-dev/peek-util/peek-util/platform/PlatformNs.js.map
+//# sourceMappingURL=/home/peek/project/peek-util/peek-util/platform/PlatformNs.js.map
