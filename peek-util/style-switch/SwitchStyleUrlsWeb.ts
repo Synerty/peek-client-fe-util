@@ -1,3 +1,3 @@
-export function switchStyleUrls(styleUrls: string[]): string[] {
-    return styleUrls;
+export function switchStyleUrls(styleUrl: string): string {
+    return styleUrl;
 }
