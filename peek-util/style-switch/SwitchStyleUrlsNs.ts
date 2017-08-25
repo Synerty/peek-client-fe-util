@@ -1,27 +1,15 @@
-import {Component} from '@angular/core';
 import {Platform} from "../platform/PlatformNs";
 import {DeviceSizeE} from "../platform/Platform";
 
-export interface IComponent {
-    selector: string;
-    template?: string;
-    templateUrl?: string;
-    styles?: string[];
-    styleUrls?: string[];
-    directives?: any;
-    providers?: any;
-    encapsulation?: number;
-}
-
 // https://stash.synerty.com/projects/PEEK/repos/peek-util/commits/1cdf4532799ac179b8d1f07fdd058069022c8b74
 
-export function StyleSwitchComponent(properties: IComponent) {
-    if (properties.styleUrls == null || !properties.styleUrls.length)
+export function switchStyleUrls(styleUrls: string[]) : string[]{
+    if (styleUrls == null || !styleUrls.length)
         return;
 
     let newStyleUrls = [];
     
-    for (let url of properties.styleUrls) {
+    for (let url of styleUrls) {
         switch (Platform.deviceSize()) {
             case DeviceSizeE.dpi326:
                 newStyleUrls.push(
@@ -41,8 +29,5 @@ export function StyleSwitchComponent(properties: IComponent) {
         }
     }
 
-    properties.styleUrls = newStyleUrls;
-
-
-    return Component(properties);
+    return newStyleUrls;
 }

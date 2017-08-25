@@ -1,15 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
 var PlatformNs_1 = require("../platform/PlatformNs");
 var Platform_1 = require("../platform/Platform");
 // https://stash.synerty.com/projects/PEEK/repos/peek-util/commits/1cdf4532799ac179b8d1f07fdd058069022c8b74
-function StyleSwitchComponent(properties) {
-    if (properties.styleUrls == null || !properties.styleUrls.length)
+function switchStyleUrls(styleUrls) {
+    if (styleUrls == null || !styleUrls.length)
         return;
     var newStyleUrls = [];
-    for (var _i = 0, _a = properties.styleUrls; _i < _a.length; _i++) {
-        var url = _a[_i];
+    for (var _i = 0, styleUrls_1 = styleUrls; _i < styleUrls_1.length; _i++) {
+        var url = styleUrls_1[_i];
         switch (PlatformNs_1.Platform.deviceSize()) {
             case Platform_1.DeviceSizeE.dpi326:
                 newStyleUrls.push(url.replace(".css", ".minWH326.css"));
@@ -22,8 +21,7 @@ function StyleSwitchComponent(properties) {
                 break;
         }
     }
-    properties.styleUrls = newStyleUrls;
-    return core_1.Component(properties);
+    return newStyleUrls;
 }
-exports.StyleSwitchComponent = StyleSwitchComponent;
-//# sourceMappingURL=/home/peek/project/peek-util/peek-util/component/StyleSwitchComponentNs.js.map
+exports.switchStyleUrls = switchStyleUrls;
+//# sourceMappingURL=/home/peek/project/peek-util/peek-util/style-switch/SwitchStyleUrlsNs.js.map
