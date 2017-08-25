@@ -6,7 +6,7 @@ set -o nounset
 set -o errexit
 
 echo "Compiling TypeScript"
-tsc
+tsc || true
 
 if [ -n "$(git status --porcelain)" ]; then
     echo "There are uncomitted changes, please make sure all changes are comitted" >&2
