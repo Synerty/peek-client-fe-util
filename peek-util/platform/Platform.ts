@@ -1,7 +1,7 @@
 
 export enum DeviceSizeE {
-  dpi326,
-  dpi401,
+  dpi300,
+  dpi400,
   default
 }
 

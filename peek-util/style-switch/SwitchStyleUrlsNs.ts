@@ -6,11 +6,11 @@ import {DeviceSizeE} from "../platform/Platform";
 export function switchStyleUrls(styleUrl: string): string {
 
     switch (Platform.deviceSize()) {
-        case DeviceSizeE.dpi326:
-            return styleUrl.replace(".css", ".minWH326.css");
+        case DeviceSizeE.dpi300:
+            return styleUrl.replace(".css", ".ppi300.css");
 
-        case DeviceSizeE.dpi401:
-            return styleUrl.replace(".css", ".minWH401.css");
+        case DeviceSizeE.dpi400:
+            return styleUrl.replace(".css", ".ppi400.css");
 
         case DeviceSizeE.default:
             return styleUrl;

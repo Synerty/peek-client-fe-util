@@ -4,4 +4,4 @@ var title_service_1 = require("./peek-util/title.service");
 exports.TitleService = title_service_1.TitleService;
 var Platform_1 = require("./peek-util/platform/Platform");
 exports.DeviceSizeE = Platform_1.DeviceSizeE;
-//# sourceMappingURL=/home/peek/project/peek-util/index.js.map
+//# sourceMappingURL=/Users/peek/peek-dev/peek-util/index.js.map

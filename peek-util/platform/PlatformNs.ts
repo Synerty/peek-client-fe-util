@@ -12,19 +12,13 @@ export class Platform implements PlatformI {
 
   static deviceSize(): DeviceSizeE {
 
-    let deviceSize = platformModule.screen.mainScreen.widthPixels;
+    let deviceSize = platformModule.screen.mainScreen.scale;
 
-    // iPhone: SE, 5, 6, & 7 resolution width
-    let screenQualifier326=640;
+    if (deviceSize => 400)
+      return DeviceSizeE.dpi400;
 
-    // iPhone: 6+ & 7+
-    let screenQualifier401=1242;
-
-    if (deviceSize => screenQualifier401)
-      return DeviceSizeE.dpi401;
-
-    if (deviceSize => screenQualifier326)
-      return DeviceSizeE.dpi326;
+    if (deviceSize => 300)
+      return DeviceSizeE.dpi300;
 
     return DeviceSizeE.default;
   }

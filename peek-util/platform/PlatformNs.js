@@ -12,18 +12,14 @@ var Platform = (function () {
         return false;
     };
     Platform.deviceSize = function () {
-        var deviceSize = platformModule.screen.mainScreen.widthPixels;
-        // iPhone: SE, 5, 6, & 7 resolution width
-        var screenQualifier326 = 640;
-        // iPhone: 6+ & 7+
-        var screenQualifier401 = 1242;
-        if (function (deviceSize) { return screenQualifier401; })
-            return Platform_1.DeviceSizeE.dpi401;
-        if (function (deviceSize) { return screenQualifier326; })
-            return Platform_1.DeviceSizeE.dpi326;
+        var deviceSize = platformModule.screen.mainScreen.scale;
+        if (function (deviceSize) { return 400; })
+            return Platform_1.DeviceSizeE.dpi400;
+        if (function (deviceSize) { return 300; })
+            return Platform_1.DeviceSizeE.dpi300;
         return Platform_1.DeviceSizeE.default;
     };
     return Platform;
 }());
 exports.Platform = Platform;
-//# sourceMappingURL=/home/peek/project/peek-util/peek-util/platform/PlatformNs.js.map
+//# sourceMappingURL=/Users/peek/peek-dev/peek-util/peek-util/platform/PlatformNs.js.map
