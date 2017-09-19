@@ -13,17 +13,17 @@ var core_1 = require("@angular/core");
 var rxjs_1 = require("rxjs");
 var FooterService = (function () {
     function FooterService(links) {
-        this.title = new rxjs_1.Subject();
-        this.titleSnapshot = '';
+        this.statusText = new rxjs_1.Subject();
+        this.statusTextSnapshot = '';
         this.isEnabled = new rxjs_1.Subject();
         this.isEnabledSnaphot = true;
         this.configLinks = new rxjs_1.Subject();
         this.configLinksSnapshot = [];
         this.configLinksSnapshot = links;
     }
-    FooterService.prototype.setTitle = function (title) {
-        this.titleSnapshot = title;
-        this.title.next(title);
+    FooterService.prototype.setStatusText = function (title) {
+        this.statusTextSnapshot = title;
+        this.statusText.next(title);
     };
     FooterService.prototype.setEnabled = function (value) {
         this.isEnabledSnaphot = value;

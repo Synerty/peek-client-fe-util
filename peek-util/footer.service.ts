@@ -3,14 +3,14 @@ import {Subject} from "rxjs";
 
 export interface ConfigLink {
     'plugin': string;
-    'resourcePath': string;
+    'route': string;
     'text': string;
 }
 
 @Injectable()
 export class FooterService {
-    title = new Subject<string>();
-    titleSnapshot = '';
+    statusText = new Subject<string>();
+    statusTextSnapshot = '';
 
     isEnabled = new Subject<boolean>();
     isEnabledSnaphot = true;
@@ -22,9 +22,9 @@ export class FooterService {
         this.configLinksSnapshot = links;
     }
 
-    setTitle(title: string) {
-        this.titleSnapshot = title;
-        this.title.next(title);
+    setStatusText(title: string) {
+        this.statusTextSnapshot = title;
+        this.statusText.next(title);
     }
 
     setEnabled(value: boolean) {
