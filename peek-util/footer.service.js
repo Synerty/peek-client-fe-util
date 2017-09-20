@@ -15,8 +15,6 @@ var FooterService = (function () {
     function FooterService(links) {
         this.statusText = new rxjs_1.Subject();
         this.statusTextSnapshot = '';
-        this.isEnabled = new rxjs_1.Subject();
-        this.isEnabledSnaphot = true;
         this.configLinks = new rxjs_1.Subject();
         this.configLinksSnapshot = [];
         this.configLinksSnapshot = links;
@@ -24,10 +22,6 @@ var FooterService = (function () {
     FooterService.prototype.setStatusText = function (title) {
         this.statusTextSnapshot = title;
         this.statusText.next(title);
-    };
-    FooterService.prototype.setEnabled = function (value) {
-        this.isEnabledSnaphot = value;
-        this.isEnabled.next(value);
     };
     return FooterService;
 }());

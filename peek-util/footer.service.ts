@@ -12,9 +12,6 @@ export class FooterService {
     statusText = new Subject<string>();
     statusTextSnapshot = '';
 
-    isEnabled = new Subject<boolean>();
-    isEnabledSnaphot = true;
-
     configLinks = new Subject<ConfigLink[]>();
     configLinksSnapshot: ConfigLink[] = [];
 
@@ -25,11 +22,6 @@ export class FooterService {
     setStatusText(title: string) {
         this.statusTextSnapshot = title;
         this.statusText.next(title);
-    }
-
-    setEnabled(value: boolean) {
-        this.isEnabledSnaphot = value;
-        this.isEnabled.next(value);
     }
 
 }
