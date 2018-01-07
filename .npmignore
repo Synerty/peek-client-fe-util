@@ -1,5 +1,6 @@
-*.ts
-!*.d.ts
+# The angular view / component compiler needs the definitions in the .TS files here
+# *.ts
+# !*.d.ts
 
 references.d.ts
 test-web
