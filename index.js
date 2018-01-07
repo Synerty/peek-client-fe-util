@@ -8,4 +8,4 @@ var nav_back_service_1 = require("./peek-util/nav-back.service");
 exports.NavBackService = nav_back_service_1.NavBackService;
 var Platform_1 = require("./peek-util/platform/Platform");
 exports.DeviceSizeE = Platform_1.DeviceSizeE;
-//# sourceMappingURL=/home/peek/project/peek-util/index.js.map
+//# sourceMappingURL=/Users/jchesney/project/peek-util/index.js.map

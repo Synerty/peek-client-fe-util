@@ -23,4 +23,4 @@ PeekModuleFactory.FormsModules = [forms_1.FormsModule, angular_font_awesome_1.An
  */
 PeekModuleFactory.RouterModule = router_1.RouterModule;
 exports.PeekModuleFactory = PeekModuleFactory;
-//# sourceMappingURL=/home/peek/project/peek-util/peek-util/factories/peek-module-web.factory.js.map
+//# sourceMappingURL=/Users/jchesney/project/peek-util/peek-util/factories/peek-module-web.factory.js.map

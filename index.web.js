@@ -6,4 +6,4 @@ var PlatformWeb_1 = require("./peek-util/platform/PlatformWeb");
 exports.Platform = PlatformWeb_1.Platform;
 var SwitchStyleUrlsWeb_1 = require("./peek-util/style-switch/SwitchStyleUrlsWeb");
 exports.switchStyleUrls = SwitchStyleUrlsWeb_1.switchStyleUrls;
-//# sourceMappingURL=/home/peek/project/peek-util/index.web.js.map
+//# sourceMappingURL=/Users/jchesney/project/peek-util/index.web.js.map

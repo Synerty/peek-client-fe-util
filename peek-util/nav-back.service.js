@@ -61,4 +61,4 @@ NavBackService = __decorate([
         router_1.Router])
 ], NavBackService);
 exports.NavBackService = NavBackService;
-//# sourceMappingURL=/home/peek/project/peek-util/peek-util/nav-back.service.js.map
+//# sourceMappingURL=/Users/jchesney/project/peek-util/peek-util/nav-back.service.js.map

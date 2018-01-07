@@ -16,4 +16,4 @@ var Platform = (function () {
     return Platform;
 }());
 exports.Platform = Platform;
-//# sourceMappingURL=/home/peek/project/peek-util/peek-util/platform/PlatformWeb.js.map
+//# sourceMappingURL=/Users/jchesney/project/peek-util/peek-util/platform/PlatformWeb.js.map

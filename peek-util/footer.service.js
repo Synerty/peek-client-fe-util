@@ -30,4 +30,4 @@ FooterService = __decorate([
     __metadata("design:paramtypes", [Array])
 ], FooterService);
 exports.FooterService = FooterService;
-//# sourceMappingURL=/home/peek/project/peek-util/peek-util/footer.service.js.map
+//# sourceMappingURL=/Users/jchesney/project/peek-util/peek-util/footer.service.js.map

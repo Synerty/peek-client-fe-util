@@ -14,4 +14,4 @@ function switchStyleUrls(styleUrl) {
     }
 }
 exports.switchStyleUrls = switchStyleUrls;
-//# sourceMappingURL=/home/peek/project/peek-util/peek-util/style-switch/SwitchStyleUrlsNs.js.map
+//# sourceMappingURL=/Users/jchesney/project/peek-util/peek-util/style-switch/SwitchStyleUrlsNs.js.map
