@@ -1,3 +1,4 @@
+import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { Sound } from "./Sound";
 export declare class WebSound implements Sound {
@@ -9,7 +10,7 @@ export declare class PeekModuleFactory {
     /**
      * Provide a cross platform Browser module
      */
-    static readonly FormsModules: any[];
+    static readonly FormsModules: typeof FormsModule[];
     /**
      * Provide a cross platform Router module
      */
