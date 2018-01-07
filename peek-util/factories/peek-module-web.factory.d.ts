@@ -1,5 +1,10 @@
 import { RouterModule } from "@angular/router";
 import { Sound } from "./Sound";
+export declare class WebSound implements Sound {
+    private audio;
+    constructor(soundFilePath: string);
+    play(): Promise<void>;
+}
 export declare class PeekModuleFactory {
     /**
      * Provide a cross platform Browser module

@@ -4,22 +4,39 @@ import {RouterModule} from "@angular/router";
 import {AngularFontAwesomeModule} from "angular-font-awesome/angular-font-awesome";
 import {Sound} from "./Sound";
 
+export class WebSound implements Sound {
+  private audio: Audio;
+
+  constructor(soundFilePath: string) {
+    this.audio = new Audio(soundFilePath);
+  }
+
+  play(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this.audio.play();
+      resolve();
+    });
+  }
+
+
+}
+
 export class PeekModuleFactory {
-    /**
-     * Provide a cross platform Browser module
-     */
-    static readonly FormsModules = [FormsModule, AngularFontAwesomeModule];
+  /**
+   * Provide a cross platform Browser module
+   */
+  static readonly FormsModules = [FormsModule, AngularFontAwesomeModule];
 
-    /**
-     * Provide a cross platform Router module
-     */
-    static readonly RouterModule = RouterModule;
+  /**
+   * Provide a cross platform Router module
+   */
+  static readonly RouterModule = RouterModule;
 
-    /**
-     * Create a new sound object, that can be played.
-     */
-    static createSound(soundFilePath:string) :Sound{
-        return new Audio(soundFilePath);
-    }
+  /**
+   * Create a new sound object, that can be played.
+   */
+  static createSound(soundFilePath: string): Sound {
+    return new WebSound(soundFilePath);
+  }
 }
 

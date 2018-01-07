@@ -1,3 +1,3 @@
 export interface Sound {
-    play(): null | Promise<void>;
+    play(): Promise<void>;
 }

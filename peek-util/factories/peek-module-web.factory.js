@@ -3,6 +3,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var angular_font_awesome_1 = require("angular-font-awesome/angular-font-awesome");
+var WebSound = (function () {
+    function WebSound(soundFilePath) {
+        this.audio = new Audio(soundFilePath);
+    }
+    WebSound.prototype.play = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.audio.play();
+            resolve();
+        });
+    };
+    return WebSound;
+}());
+exports.WebSound = WebSound;
 var PeekModuleFactory = (function () {
     function PeekModuleFactory() {
     }
@@ -10,7 +24,7 @@ var PeekModuleFactory = (function () {
      * Create a new sound object, that can be played.
      */
     PeekModuleFactory.createSound = function (soundFilePath) {
-        return new Audio(soundFilePath);
+        return new WebSound(soundFilePath);
     };
     return PeekModuleFactory;
 }());
