@@ -5,7 +5,7 @@ import {AngularFontAwesomeModule} from "angular-font-awesome/angular-font-awesom
 import {Sound} from "./Sound";
 
 export class WebSound implements Sound {
-  private audio: Audio;
+  private audio: any;
 
   constructor(soundFilePath: string) {
     this.audio = new Audio(soundFilePath);
