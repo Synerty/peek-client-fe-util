@@ -10,16 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var rxjs_1 = require("rxjs");
+var Subject_1 = require("rxjs/Subject");
 var TitleService = /** @class */ (function () {
     function TitleService(links) {
-        this.title = new rxjs_1.Subject();
+        this.title = new Subject_1.Subject();
         this.titleSnapshot = 'no title';
-        this.isEnabled = new rxjs_1.Subject();
+        this.isEnabled = new Subject_1.Subject();
         this.isEnabledSnaphot = true;
-        this.leftLinks = new rxjs_1.Subject();
+        this.leftLinks = new Subject_1.Subject();
         this.leftLinksSnapshot = [];
-        this.rightLinks = new rxjs_1.Subject();
+        this.rightLinks = new Subject_1.Subject();
         this.rightLinksSnapshot = [];
         for (var _i = 0, links_1 = links; _i < links_1.length; _i++) {
             var link = links_1[_i];

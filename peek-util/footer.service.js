@@ -10,12 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var rxjs_1 = require("rxjs");
+var Subject_1 = require("rxjs/Subject");
 var FooterService = /** @class */ (function () {
     function FooterService(links) {
-        this.statusText = new rxjs_1.Subject();
+        this.statusText = new Subject_1.Subject();
         this.statusTextSnapshot = '';
-        this.configLinks = new rxjs_1.Subject();
+        this.configLinks = new Subject_1.Subject();
         this.configLinksSnapshot = [];
         this.configLinksSnapshot = links;
     }

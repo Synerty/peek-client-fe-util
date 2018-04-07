@@ -1,4 +1,4 @@
-import { Subject } from "rxjs";
+import { Subject } from "rxjs/Subject";
 export interface TitleBarLink {
     'left': boolean;
     'plugin': string;

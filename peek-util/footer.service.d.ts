@@ -1,4 +1,4 @@
-import { Subject } from "rxjs";
+import { Subject } from "rxjs/Subject";
 export interface ConfigLink {
     'plugin': string;
     'route': string;
