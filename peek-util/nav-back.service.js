@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var title_service_1 = require("./title.service");
-var NavBackService = (function () {
+var NavBackService = /** @class */ (function () {
     function NavBackService(titleService, route, router) {
         var _this = this;
         this.router = router;
@@ -52,13 +52,13 @@ var NavBackService = (function () {
         // The last item on the queue is the current route
         return this.backUrls.length - 1;
     };
+    NavBackService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [title_service_1.TitleService,
+            router_1.ActivatedRoute,
+            router_1.Router])
+    ], NavBackService);
     return NavBackService;
 }());
-NavBackService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [title_service_1.TitleService,
-        router_1.ActivatedRoute,
-        router_1.Router])
-], NavBackService);
 exports.NavBackService = NavBackService;
 //# sourceMappingURL=/Users/jchesney/project/peek-util/peek-util/nav-back.service.js.map

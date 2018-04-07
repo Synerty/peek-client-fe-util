@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Platform_1 = require("./Platform");
 var platformModule = require("tns-core-modules/platform");
-var Platform = (function () {
+var Platform = /** @class */ (function () {
     function Platform() {
     }
     Platform.isNativeScript = function () {

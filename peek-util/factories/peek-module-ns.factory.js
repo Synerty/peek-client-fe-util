@@ -7,7 +7,7 @@ var forms_2 = require("nativescript-angular/forms");
 var nativescript_ngx_fonticon_1 = require("nativescript-ngx-fonticon");
 // import * as TNSSound from "nativescript-sound";
 var TNSSound = require("nativescript-sound");
-var PeekModuleFactory = (function () {
+var PeekModuleFactory = /** @class */ (function () {
     function PeekModuleFactory() {
     }
     /**
@@ -16,18 +16,18 @@ var PeekModuleFactory = (function () {
     PeekModuleFactory.createSound = function (soundFilePath) {
         return TNSSound.create('~' + soundFilePath);
     };
+    /**
+     * Provide a cross platform Browser module
+     */
+    PeekModuleFactory.FormsModules = [
+        forms_1.FormsModule, nativescript_module_1.NativeScriptModule, forms_2.NativeScriptFormsModule,
+        nativescript_ngx_fonticon_1.TNSFontIconModule
+    ];
+    /**
+     * Provide a cross platform Router module
+     */
+    PeekModuleFactory.RouterModule = nativescript_angular_1.NativeScriptRouterModule;
     return PeekModuleFactory;
 }());
-/**
- * Provide a cross platform Browser module
- */
-PeekModuleFactory.FormsModules = [
-    forms_1.FormsModule, nativescript_module_1.NativeScriptModule, forms_2.NativeScriptFormsModule,
-    nativescript_ngx_fonticon_1.TNSFontIconModule
-];
-/**
- * Provide a cross platform Router module
- */
-PeekModuleFactory.RouterModule = nativescript_angular_1.NativeScriptRouterModule;
 exports.PeekModuleFactory = PeekModuleFactory;
 //# sourceMappingURL=/Users/jchesney/project/peek-util/peek-util/factories/peek-module-ns.factory.js.map

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Platform_1 = require("./Platform");
-var Platform = (function () {
+var Platform = /** @class */ (function () {
     function Platform() {
     }
     Platform.isNativeScript = function () {

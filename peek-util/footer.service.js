@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var rxjs_1 = require("rxjs");
-var FooterService = (function () {
+var FooterService = /** @class */ (function () {
     function FooterService(links) {
         this.statusText = new rxjs_1.Subject();
         this.statusTextSnapshot = '';
@@ -23,11 +23,11 @@ var FooterService = (function () {
         this.statusTextSnapshot = title;
         this.statusText.next(title);
     };
+    FooterService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [Array])
+    ], FooterService);
     return FooterService;
 }());
-FooterService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [Array])
-], FooterService);
 exports.FooterService = FooterService;
 //# sourceMappingURL=/Users/jchesney/project/peek-util/peek-util/footer.service.js.map

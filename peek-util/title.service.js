@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var rxjs_1 = require("rxjs");
-var TitleService = (function () {
+var TitleService = /** @class */ (function () {
     function TitleService(links) {
         this.title = new rxjs_1.Subject();
         this.titleSnapshot = 'no title';
@@ -75,11 +75,11 @@ var TitleService = (function () {
             }
         }
     };
+    TitleService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [Array])
+    ], TitleService);
     return TitleService;
 }());
-TitleService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [Array])
-], TitleService);
 exports.TitleService = TitleService;
 //# sourceMappingURL=/Users/jchesney/project/peek-util/peek-util/title.service.js.map
