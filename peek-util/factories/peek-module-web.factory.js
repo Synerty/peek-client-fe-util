@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
-var angular_font_awesome_1 = require("angular-font-awesome/angular-font-awesome");
+var angular_font_awesome_1 = require("angular-font-awesome/dist/angular-font-awesome");
 var WebSound = /** @class */ (function () {
     function WebSound(soundFilePath) {
         this.audio = new Audio(soundFilePath);

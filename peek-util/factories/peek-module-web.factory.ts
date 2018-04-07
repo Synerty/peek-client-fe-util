@@ -1,7 +1,7 @@
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 
-import {AngularFontAwesomeModule} from "angular-font-awesome/angular-font-awesome";
+import {AngularFontAwesomeModule} from "angular-font-awesome/dist/angular-font-awesome";
 import {Sound} from "./Sound";
 
 export class WebSound implements Sound {
