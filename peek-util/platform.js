@@ -6,4 +6,4 @@ var DeviceSizeE;
     DeviceSizeE[DeviceSizeE["dpi400"] = 1] = "dpi400";
     DeviceSizeE[DeviceSizeE["default"] = 2] = "default";
 })(DeviceSizeE = exports.DeviceSizeE || (exports.DeviceSizeE = {}));
-//# sourceMappingURL=/Users/jchesney/project/peek-util/peek-util/platform/Platform.js.map
+//# sourceMappingURL=/Users/jchesney/project/peek-util/peek-util/Platform.js.map
