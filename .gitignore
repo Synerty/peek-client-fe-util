@@ -4,6 +4,10 @@
 /dist
 /tmp
 
+.ng_pkg_build/
+dist.tgz
+
+
 # dependencies
 /node_modules
 /bower_components

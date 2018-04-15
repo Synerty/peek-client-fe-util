@@ -42,8 +42,11 @@ echo "Pushing to Git"
 git push
 git push --tags
 
+# Create the angular package
+npm run packagr
+
 echo "Publishing to NPM"
-npm publish --access=public
+(cd dist && npm publish --access=public)
 
 
 echo

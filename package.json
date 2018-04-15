@@ -3,25 +3,41 @@
   "version": "0.5.12",
   "license": "MIT",
   "angular-cli": {},
+  "description": "Peek frontend utilities",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Synerty/peek-util.git"
+  },
   "scripts": {
-    "start": "ng serve",
-    "lint": "tslint \"src/**/*.ts\"",
-    "test": "ng test",
-    "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "packagr": "ng-packagr -p ng-package.json"
+
   },
   "private": false,
-  "dependencies": {
+  "peerDependencies": {
     "@angular/platform-browser": "~5.2.0",
     "@angular/common": "~5.2.0",
     "@angular/core": "~5.2.0",
     "@angular/router": "~5.2.0",
     "@angular/forms": "~5.2.0",
-    "angular-font-awesome": "^3.1.2",
     "file-system": "^2.2.2",
     "rxjs": "^5.5.6",
     "ts-md5": "^1.2.0",
     "zone.js": "^0.8.18"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@angular/platform-browser": "~5.2.0",
+    "@angular/common": "~5.2.0",
+    "@angular/core": "~5.2.0",
+    "@angular/router": "~5.2.0",
+    "@angular/compiler": "~5.2.0",
+    "@angular/compiler-cli": "~5.2.0",
+    "@angular/forms": "~5.2.0",
+    "file-system": "^2.2.2",
+    "rxjs": "^5.5.6",
+    "ts-md5": "^1.2.0",
+    "zone.js": "^0.8.18",
+    "ng-packagr": "^2.4.2",
+    "typescript": "~2.6.0"
+  }
 }
