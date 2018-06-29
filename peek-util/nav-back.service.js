@@ -12,16 +12,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var title_service_1 = require("./title.service");
+require("rxjs/add/operator/filter");
 var NavBackService = /** @class */ (function () {
-    function NavBackService(titleService, router, route) {
+    function NavBackService(titleService, router) {
         var _this = this;
         this.titleService = titleService;
         this.router = router;
         this.MAX_BACK = 20;
         this.backTitles = [];
         this.backUrls = [];
-        route.fragment.subscribe(function () { return _this._recordRouteChange(); });
-        route.params.subscribe(function () { return _this._recordRouteChange(); });
+        router.events
+            .filter(function (e) { return e instanceof router_1.NavigationEnd; })
+            .subscribe(function (e) { return _this._recordRouteChange(e); });
         // Update the route titles as they come in
         titleService.title.subscribe(function (title) {
             if (_this.backTitles.length == 0)
@@ -29,8 +31,8 @@ var NavBackService = /** @class */ (function () {
             _this.backTitles[_this.backTitles.length - 1] = title;
         });
     }
-    NavBackService.prototype._recordRouteChange = function () {
-        var thisUrl = this.router.url;
+    NavBackService.prototype._recordRouteChange = function (e) {
+        var thisUrl = e.urlAfterRedirects;
         var lastUrl = '';
         if (this.backUrls.length != 0) {
             lastUrl = this.backUrls[this.backUrls.length - 1];
@@ -60,28 +62,27 @@ var NavBackService = /** @class */ (function () {
     };
     NavBackService.prototype.navBack = function (count) {
         if (count === void 0) { count = 1; }
-        if (this.backUrls.length < count + 1) {
+        if (this.backUrls.length < count) {
             throw new Error(count + " exceeds max nav back " + this.backUrls.length);
         }
         var url = '';
-        for (var i = 0; i < count; i++) {
-            url = this.backUrls.shift();
-            this.backTitles.shift();
+        for (var i = 0; i <= count; i++) {
+            url = this.backUrls.pop();
+            this.backTitles.pop();
         }
-        this.router.navigate([url]);
+        this.router.navigateByUrl(url);
     };
     NavBackService.prototype.navBackTitles = function () {
         return this.backTitles.slice(1);
     };
     NavBackService.prototype.navBackLen = function () {
         // The last item on the queue is the current route
-        return this.backUrls.length - 1;
+        return this.backUrls.length;
     };
     NavBackService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [title_service_1.TitleService,
-            router_1.Router,
-            router_1.ActivatedRoute])
+            router_1.Router])
     ], NavBackService);
     return NavBackService;
 }());

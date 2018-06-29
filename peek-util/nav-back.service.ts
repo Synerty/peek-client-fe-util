@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 
 
-import {ActivatedRoute, Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {TitleService} from './title.service';
+import 'rxjs/add/operator/filter';
 
 
 @Injectable()
@@ -12,11 +13,11 @@ export class NavBackService {
   private backUrls: string[] = [];
 
   constructor(private titleService: TitleService,
-              private router: Router,
-              route: ActivatedRoute) {
+              private router: Router) {
 
-    route.fragment.subscribe(() => this._recordRouteChange());
-    route.params.subscribe(() => this._recordRouteChange());
+    router.events
+      .filter((e) => e instanceof NavigationEnd)
+      .subscribe((e: NavigationEnd) => this._recordRouteChange(e));
 
     // Update the route titles as they come in
     titleService.title.subscribe((title: string) => {
@@ -28,8 +29,8 @@ export class NavBackService {
 
   }
 
-  private _recordRouteChange(): void {
-    let thisUrl = this.router.url;
+  private _recordRouteChange(e: NavigationEnd): void {
+    let thisUrl = e.urlAfterRedirects;
     let lastUrl = '';
 
     if (this.backUrls.length != 0) {
@@ -63,17 +64,17 @@ export class NavBackService {
   }
 
   navBack(count = 1): void {
-    if (this.backUrls.length < count + 1) {
+    if (this.backUrls.length < count) {
       throw new Error(`${count} exceeds max nav back ${this.backUrls.length}`);
     }
 
     let url = '';
-    for (let i = 0; i < count; i++) {
-      url = this.backUrls.shift();
-      this.backTitles.shift();
+    for (let i = 0; i <= count; i++) {
+      url = this.backUrls.pop();
+      this.backTitles.pop();
     }
 
-    this.router.navigate([url]);
+    this.router.navigateByUrl(url);
   }
 
   navBackTitles(): string[] {
@@ -82,7 +83,7 @@ export class NavBackService {
 
   navBackLen(): number {
     // The last item on the queue is the current route
-    return this.backUrls.length - 1;
+    return this.backUrls.length;
   }
 
 }
