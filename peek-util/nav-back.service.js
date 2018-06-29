@@ -13,36 +13,15 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var title_service_1 = require("./title.service");
 var NavBackService = /** @class */ (function () {
-    function NavBackService(titleService, route, router) {
+    function NavBackService(titleService, router, route) {
         var _this = this;
+        this.titleService = titleService;
         this.router = router;
         this.MAX_BACK = 20;
         this.backTitles = [];
         this.backUrls = [];
-        route.url.subscribe(function () {
-            var thisUrl = router.url;
-            var lastUrl = '';
-            if (_this.backUrls.length != 0) {
-                lastUrl = _this.backUrls[_this.backUrls.length - 1];
-                lastUrl = _this._stripUrlParams(lastUrl);
-            }
-            if (lastUrl == _this._stripUrlParams(thisUrl)) {
-                _this.backUrls[_this.backUrls.length - 1] = thisUrl;
-                _this.backTitles[_this.backTitles.length - 1] = titleService.titleSnapshot;
-            }
-            else {
-                _this.backUrls.push(thisUrl);
-                _this.backTitles.push(titleService.titleSnapshot);
-            }
-            // This should never happen
-            if (_this.backTitles.length != _this.backUrls.length) {
-                throw new Error('backTitles and backUrls length missmatch');
-            }
-            while (_this.backUrls.length > _this.MAX_BACK) {
-                _this.backUrls.shift();
-                _this.backTitles.shift();
-            }
-        });
+        route.fragment.subscribe(function () { return _this._recordRouteChange(); });
+        route.params.subscribe(function () { return _this._recordRouteChange(); });
         // Update the route titles as they come in
         titleService.title.subscribe(function (title) {
             if (_this.backTitles.length == 0)
@@ -50,6 +29,30 @@ var NavBackService = /** @class */ (function () {
             _this.backTitles[_this.backTitles.length - 1] = title;
         });
     }
+    NavBackService.prototype._recordRouteChange = function () {
+        var thisUrl = this.router.url;
+        var lastUrl = '';
+        if (this.backUrls.length != 0) {
+            lastUrl = this.backUrls[this.backUrls.length - 1];
+            lastUrl = this._stripUrlParams(lastUrl);
+        }
+        if (lastUrl == this._stripUrlParams(thisUrl)) {
+            this.backUrls[this.backUrls.length - 1] = thisUrl;
+            this.backTitles[this.backTitles.length - 1] = this.titleService.titleSnapshot;
+        }
+        else {
+            this.backUrls.push(thisUrl);
+            this.backTitles.push(this.titleService.titleSnapshot);
+        }
+        // This should never happen
+        if (this.backTitles.length != this.backUrls.length) {
+            throw new Error('backTitles and backUrls length missmatch');
+        }
+        while (this.backUrls.length > this.MAX_BACK) {
+            this.backUrls.shift();
+            this.backTitles.shift();
+        }
+    };
     NavBackService.prototype._stripUrlParams = function (url) {
         url = url.split('?')[0];
         url = url.split(';')[0];
@@ -77,8 +80,8 @@ var NavBackService = /** @class */ (function () {
     NavBackService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [title_service_1.TitleService,
-            router_1.ActivatedRoute,
-            router_1.Router])
+            router_1.Router,
+            router_1.ActivatedRoute])
     ], NavBackService);
     return NavBackService;
 }());

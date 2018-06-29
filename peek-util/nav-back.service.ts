@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 
 
-import {ActivatedRoute, Router, UrlSegment} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TitleService} from './title.service';
 
 
@@ -11,39 +11,12 @@ export class NavBackService {
   private backTitles: string[] = [];
   private backUrls: string[] = [];
 
-  constructor(titleService: TitleService,
-              route: ActivatedRoute,
-              private router: Router) {
+  constructor(private titleService: TitleService,
+              private router: Router,
+              route: ActivatedRoute) {
 
-    route.url.subscribe(() => {
-
-      let thisUrl = router.url;
-      let lastUrl = '';
-
-      if (this.backUrls.length != 0) {
-        lastUrl = this.backUrls[this.backUrls.length - 1];
-        lastUrl = this._stripUrlParams(lastUrl);
-      }
-
-      if (lastUrl == this._stripUrlParams(thisUrl)) {
-        this.backUrls[this.backUrls.length - 1] = thisUrl;
-        this.backTitles[this.backTitles.length - 1] = titleService.titleSnapshot;
-      } else {
-        this.backUrls.push(thisUrl);
-        this.backTitles.push(titleService.titleSnapshot);
-      }
-
-      // This should never happen
-      if (this.backTitles.length != this.backUrls.length) {
-        throw new Error('backTitles and backUrls length missmatch')
-      }
-
-      while (this.backUrls.length > this.MAX_BACK) {
-        this.backUrls.shift();
-        this.backTitles.shift();
-      }
-
-    });
+    route.fragment.subscribe(() => this._recordRouteChange());
+    route.params.subscribe(() => this._recordRouteChange());
 
     // Update the route titles as they come in
     titleService.title.subscribe((title: string) => {
@@ -53,6 +26,34 @@ export class NavBackService {
       this.backTitles[this.backTitles.length - 1] = title;
     });
 
+  }
+
+  private _recordRouteChange(): void {
+    let thisUrl = this.router.url;
+    let lastUrl = '';
+
+    if (this.backUrls.length != 0) {
+      lastUrl = this.backUrls[this.backUrls.length - 1];
+      lastUrl = this._stripUrlParams(lastUrl);
+    }
+
+    if (lastUrl == this._stripUrlParams(thisUrl)) {
+      this.backUrls[this.backUrls.length - 1] = thisUrl;
+      this.backTitles[this.backTitles.length - 1] = this.titleService.titleSnapshot;
+    } else {
+      this.backUrls.push(thisUrl);
+      this.backTitles.push(this.titleService.titleSnapshot);
+    }
+
+    // This should never happen
+    if (this.backTitles.length != this.backUrls.length) {
+      throw new Error('backTitles and backUrls length missmatch')
+    }
+
+    while (this.backUrls.length > this.MAX_BACK) {
+      this.backUrls.shift();
+      this.backTitles.shift();
+    }
   }
 
   private _stripUrlParams(url: string): string {
