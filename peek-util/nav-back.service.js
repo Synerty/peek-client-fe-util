@@ -19,31 +19,53 @@ var NavBackService = /** @class */ (function () {
         this.MAX_BACK = 20;
         this.backTitles = [];
         this.backUrls = [];
-        route.url.subscribe(function (url) {
-            _this.backUrls.unshift(url);
-            _this.backTitles.unshift(titleService.titleSnapshot);
+        route.url.subscribe(function () {
+            var thisUrl = router.url;
+            var lastUrl = '';
+            if (_this.backUrls.length != 0) {
+                lastUrl = _this.backUrls[_this.backUrls.length - 1];
+                lastUrl = _this._stripUrlParams(lastUrl);
+            }
+            if (lastUrl == _this._stripUrlParams(thisUrl)) {
+                _this.backUrls[_this.backUrls.length - 1] = thisUrl;
+                _this.backTitles[_this.backTitles.length - 1] = titleService.titleSnapshot;
+            }
+            else {
+                _this.backUrls.push(thisUrl);
+                _this.backTitles.push(titleService.titleSnapshot);
+            }
             // This should never happen
             if (_this.backTitles.length != _this.backUrls.length) {
-                throw new Error("backTitles and backUrls length missmatch");
+                throw new Error('backTitles and backUrls length missmatch');
             }
-            while (_this.backTitles.length > _this.MAX_BACK) {
-                _this.backUrls.pop();
-                _this.backUrls.pop();
+            while (_this.backUrls.length > _this.MAX_BACK) {
+                _this.backUrls.shift();
+                _this.backTitles.shift();
             }
         });
         // Update the route titles as they come in
         titleService.title.subscribe(function (title) {
             if (_this.backTitles.length == 0)
                 return;
-            _this.backTitles[0] = title;
+            _this.backTitles[_this.backTitles.length - 1] = title;
         });
     }
+    NavBackService.prototype._stripUrlParams = function (url) {
+        url = url.split('?')[0];
+        url = url.split(';')[0];
+        return url;
+    };
     NavBackService.prototype.navBack = function (count) {
         if (count === void 0) { count = 1; }
         if (this.backUrls.length < count + 1) {
             throw new Error(count + " exceeds max nav back " + this.backUrls.length);
         }
-        this.router.navigate(this.backUrls[count]);
+        var url = '';
+        for (var i = 0; i < count; i++) {
+            url = this.backUrls.shift();
+            this.backTitles.shift();
+        }
+        this.router.navigate([url]);
     };
     NavBackService.prototype.navBackTitles = function () {
         return this.backTitles.slice(1);

@@ -1,61 +1,87 @@
-import {Injectable} from "@angular/core";
+import {Injectable} from '@angular/core';
 
 
-import {ActivatedRoute, Router, UrlSegment} from "@angular/router";
-import {TitleService} from "./title.service";
+import {ActivatedRoute, Router, UrlSegment} from '@angular/router';
+import {TitleService} from './title.service';
 
 
 @Injectable()
 export class NavBackService {
-    private readonly MAX_BACK = 20;
-    private backTitles: string[] = [];
-    private backUrls: UrlSegment[][] = [];
+  private readonly MAX_BACK = 20;
+  private backTitles: string[] = [];
+  private backUrls: string[] = [];
 
-    constructor(titleService: TitleService,
-                route: ActivatedRoute,
-                private router: Router) {
+  constructor(titleService: TitleService,
+              route: ActivatedRoute,
+              private router: Router) {
 
-        route.url.subscribe((url: UrlSegment[]) => {
-            this.backUrls.unshift(url);
-            this.backTitles.unshift(titleService.titleSnapshot);
+    route.url.subscribe(() => {
 
-            // This should never happen
-            if (this.backTitles.length != this.backUrls.length) {
-                throw new Error("backTitles and backUrls length missmatch")
-            }
+      let thisUrl = router.url;
+      let lastUrl = '';
 
-            while (this.backTitles.length > this.MAX_BACK) {
-                this.backUrls.pop();
-                this.backUrls.pop();
-            }
+      if (this.backUrls.length != 0) {
+        lastUrl = this.backUrls[this.backUrls.length - 1];
+        lastUrl = this._stripUrlParams(lastUrl);
+      }
 
-        });
+      if (lastUrl == this._stripUrlParams(thisUrl)) {
+        this.backUrls[this.backUrls.length - 1] = thisUrl;
+        this.backTitles[this.backTitles.length - 1] = titleService.titleSnapshot;
+      } else {
+        this.backUrls.push(thisUrl);
+        this.backTitles.push(titleService.titleSnapshot);
+      }
 
-        // Update the route titles as they come in
-        titleService.title.subscribe((title: string) => {
-            if (this.backTitles.length == 0)
-                return;
+      // This should never happen
+      if (this.backTitles.length != this.backUrls.length) {
+        throw new Error('backTitles and backUrls length missmatch')
+      }
 
-            this.backTitles[0] = title;
-        });
+      while (this.backUrls.length > this.MAX_BACK) {
+        this.backUrls.shift();
+        this.backTitles.shift();
+      }
 
+    });
+
+    // Update the route titles as they come in
+    titleService.title.subscribe((title: string) => {
+      if (this.backTitles.length == 0)
+        return;
+
+      this.backTitles[this.backTitles.length - 1] = title;
+    });
+
+  }
+
+  private _stripUrlParams(url: string): string {
+    url = url.split('?')[0];
+    url = url.split(';')[0];
+    return url;
+  }
+
+  navBack(count = 1): void {
+    if (this.backUrls.length < count + 1) {
+      throw new Error(`${count} exceeds max nav back ${this.backUrls.length}`);
     }
 
-    navBack(count = 1): void {
-        if (this.backUrls.length < count + 1) {
-            throw new Error(`${count} exceeds max nav back ${this.backUrls.length}`);
-        }
-
-        this.router.navigate(this.backUrls[count]);
+    let url = '';
+    for (let i = 0; i < count; i++) {
+      url = this.backUrls.shift();
+      this.backTitles.shift();
     }
 
-    navBackTitles(): string[] {
-        return this.backTitles.slice(1);
-    }
+    this.router.navigate([url]);
+  }
 
-    navBackLen(): number {
-        // The last item on the queue is the current route
-        return this.backUrls.length - 1;
-    }
+  navBackTitles(): string[] {
+    return this.backTitles.slice(1);
+  }
+
+  navBackLen(): number {
+    // The last item on the queue is the current route
+    return this.backUrls.length - 1;
+  }
 
 }
