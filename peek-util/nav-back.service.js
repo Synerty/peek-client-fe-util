@@ -56,6 +56,8 @@ var NavBackService = /** @class */ (function () {
         }
     };
     NavBackService.prototype._stripUrlParams = function (url) {
+        if (url == null)
+            return '';
         url = url.split('?')[0];
         url = url.split(';')[0];
         return url;

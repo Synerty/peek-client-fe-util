@@ -58,6 +58,9 @@ export class NavBackService {
   }
 
   private _stripUrlParams(url: string): string {
+    if (url == null)
+      return '';
+
     url = url.split('?')[0];
     url = url.split(';')[0];
     return url;
