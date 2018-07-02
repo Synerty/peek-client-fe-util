@@ -3,8 +3,7 @@ import {Injectable} from '@angular/core';
 
 import {NavigationEnd, Router} from '@angular/router';
 import {TitleService} from './title.service';
-import 'rxjs/add/operator/filter';
-
+import {filter} from 'rxjs/operators';
 
 @Injectable()
 export class NavBackService {
@@ -15,8 +14,9 @@ export class NavBackService {
   constructor(private titleService: TitleService,
               private router: Router) {
 
-    router.events
-      .filter((e) => e instanceof NavigationEnd)
+    router.events.pipe(
+      filter((e) => e instanceof NavigationEnd)
+    )
       .subscribe((e: NavigationEnd) => this._recordRouteChange(e));
 
     // Update the route titles as they come in

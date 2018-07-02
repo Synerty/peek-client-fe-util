@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var title_service_1 = require("./title.service");
-require("rxjs/add/operator/filter");
+var operators_1 = require("rxjs/operators");
 var NavBackService = /** @class */ (function () {
     function NavBackService(titleService, router) {
         var _this = this;
@@ -21,8 +21,7 @@ var NavBackService = /** @class */ (function () {
         this.MAX_BACK = 20;
         this.backTitles = [];
         this.backUrls = [];
-        router.events
-            .filter(function (e) { return e instanceof router_1.NavigationEnd; })
+        router.events.pipe(operators_1.filter(function (e) { return e instanceof router_1.NavigationEnd; }))
             .subscribe(function (e) { return _this._recordRouteChange(e); });
         // Update the route titles as they come in
         titleService.title.subscribe(function (title) {

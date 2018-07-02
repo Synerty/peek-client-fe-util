@@ -1,6 +1,5 @@
 import { Router } from '@angular/router';
 import { TitleService } from './title.service';
-import 'rxjs/add/operator/filter';
 export declare class NavBackService {
     private titleService;
     private router;
