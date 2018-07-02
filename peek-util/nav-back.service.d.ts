@@ -7,8 +7,8 @@ export declare class NavBackService {
     private backTitles;
     private backUrls;
     constructor(titleService: TitleService, router: Router);
-    private _recordRouteChange;
-    private _stripUrlParams;
+    private _recordRouteChange(e);
+    private _stripUrlParams(url);
     navBack(count?: number): void;
     navBackTitles(): string[];
     navBackLen(): number;
