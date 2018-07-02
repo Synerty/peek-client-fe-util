@@ -1,4 +1,3 @@
-import { Subject } from "rxjs/Subject";
 export interface TitleBarLink {
     'left': boolean;
     'plugin': string;
@@ -7,13 +6,13 @@ export interface TitleBarLink {
     'badgeCount': number | null;
 }
 export declare class TitleService {
-    title: Subject<string>;
+    title: any;
     titleSnapshot: string;
-    isEnabled: Subject<boolean>;
+    isEnabled: any;
     isEnabledSnaphot: boolean;
-    leftLinks: Subject<TitleBarLink[]>;
+    leftLinks: any;
     leftLinksSnapshot: TitleBarLink[];
-    rightLinks: Subject<TitleBarLink[]>;
+    rightLinks: any;
     rightLinksSnapshot: TitleBarLink[];
     constructor(links: TitleBarLink[]);
     setTitle(title: string): void;

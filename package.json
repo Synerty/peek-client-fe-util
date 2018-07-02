@@ -14,26 +14,27 @@
   },
   "private": false,
   "peerDependencies": {
-    "@angular/platform-browser": "~5.2.0",
-    "@angular/common": "~5.2.0",
-    "@angular/core": "~5.2.0",
-    "@angular/router": "~5.2.0",
-    "@angular/forms": "~5.2.0",
-    "rxjs": "^5.5.6",
+    "@angular/platform-browser": "~6.0.0",
+    "@angular/common": "~6.0.0",
+    "@angular/core": "~6.0.0",
+    "@angular/router": "~6.0.0",
+    "@angular/forms": "~6.0.0",
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
-    "@angular/platform-browser": "~5.2.0",
-    "@angular/common": "~5.2.0",
-    "@angular/core": "~5.2.0",
-    "@angular/router": "~5.2.0",
-    "@angular/compiler": "~5.2.0",
-    "@angular/compiler-cli": "~5.2.0",
-    "@angular/forms": "~5.2.0",
-    "rxjs": "^5.5.6",
+    "@angular/platform-browser": "~6.0.0",
+    "@angular/common": "~6.0.0",
+    "@angular/core": "~6.0.0",
+    "@angular/router": "~6.0.0",
+    "@angular/compiler": "~6.0.0",
+    "@angular/compiler-cli": "~6.0.0",
+    "@angular/forms": "~6.0.0",
+    "rxjs": "^6.2.1",
     "zone.js": "^0.8.18",
     "ng-packagr": "^2.4.2",
-    "typescript": "~2.6.0"
+    "typescript": "~2.7.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "tsickle": "^0.32.0"
+  }
 }

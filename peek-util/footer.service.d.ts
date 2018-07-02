@@ -1,13 +1,12 @@
-import { Subject } from "rxjs/Subject";
 export interface ConfigLink {
     'plugin': string;
     'route': string;
     'text': string;
 }
 export declare class FooterService {
-    statusText: Subject<string>;
+    statusText: any;
     statusTextSnapshot: string;
-    configLinks: Subject<ConfigLink[]>;
+    configLinks: any;
     configLinksSnapshot: ConfigLink[];
     constructor(links: ConfigLink[]);
     setStatusText(title: string): void;
